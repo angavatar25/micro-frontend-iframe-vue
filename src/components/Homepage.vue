@@ -1,7 +1,37 @@
 <template>
     <div>
-        <div class=" w-96 p-3 m-auto min-h-screen bg-white border-t-2 border-yellow-400">
-            <p class=" text-3xl font-bold mb-4">Product List</p>
+        <div class=" w-96 p-3 m-auto bg-white border-t-2 border-yellow-400 relative">
+            <div :class=" openCart ? 'flex' : ' hidden'" class="justify-center modal-window items-center absolute w-full h-screen">
+                <div style="max-height: calc(100vh - 20vh)"
+                        class=" mx-5
+                        my-auto
+                        inline-block
+                        bg-white
+                        text-white
+                        rounded-2xl
+                        text-left
+                        shadow-xl
+                        transform
+                        transition-all
+                        sm:align-middle sm:max-w-lg
+                        w-full
+                        "
+                >
+                    <div class=" text-right">
+                        <button class=" bg-yellow-500 text-white rounded-sm p-4" @click="openCart = false">Close</button>
+                    </div>
+                    <iframe
+                        class=" w-full"
+                        src="http://localhost:3000"
+                        style="border:none;"
+                        id="iframe" >
+                    </iframe>
+                </div>
+            </div>
+            <div class=" flex justify-between mb-4">    
+                <p class=" text-3xl font-bold">Product List</p>
+                <button @click="openCart = true">Open Cart</button>
+            </div>
             <div v-for="product in myData" :key="product.id">
                 <div class="flex mb-6">
                     <div class=" flex">
@@ -18,11 +48,6 @@
                     </div>
                 </div>
             </div>
-            <iframe 
-                src="http://localhost:3000" 
-                id="iframe" 
-                frameborder="0">
-            </iframe>
         </div>
     </div>
 </template>
@@ -33,7 +58,8 @@ import DummyJson from '../../dummy.json'
 export default {
     data() {
         return {
-            myData: DummyJson
+            myData: DummyJson,
+            openCart: false
         }
     },
     methods: {
@@ -52,3 +78,9 @@ export default {
     }
 }
 </script>
+
+<style>
+.modal-window {
+    background: rgba(0, 0, 0, 0.5);
+}
+</style>
