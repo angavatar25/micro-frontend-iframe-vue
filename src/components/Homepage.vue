@@ -22,7 +22,7 @@
                     </div>
                     <iframe
                         class=" w-full"
-                        src="http://localhost:3000"
+                        src="https://sad-williams-a3a722.netlify.app"
                         style="border:none;"
                         id="iframe" >
                     </iframe>
@@ -68,7 +68,7 @@ export default {
         },
         sendData(item, price) {
           var iframe = document.getElementById('iframe').contentWindow
-          var target = 'http://localhost:3000'
+          var target = 'https://sad-williams-a3a722.netlify.app'
           const data = {
               item: item,
               price: price
